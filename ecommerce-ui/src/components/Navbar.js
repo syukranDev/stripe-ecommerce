@@ -1,8 +1,11 @@
 import React, { useState, useContext} from 'react'
-import { Button, Container, Navbar, Modal, NavbarBrand, Nav, ModalBody } from 'react-bootstrap'
+import { Button, Badge, Navbar, Modal, NavbarBrand, Nav, ModalBody } from 'react-bootstrap'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle'
 import { CartContext } from '../context/CartContext'
 import { CheckoutCartProduct } from './CheckoutCartProduct'
+
+// import * as React from 'react';
+// import MailIcon from '@mui/icons-material/Mail';
 
 
 export const NavbarComponent = () => {
@@ -33,7 +36,20 @@ export const NavbarComponent = () => {
             <NavbarBrand href='/'>Ecommerce Store</NavbarBrand>
             <NavbarToggle/>
             <Navbar.Collapse className='justify-content-end'>
-                <Button onClick={handleShow}>Cart {totalCartCount} Items</Button>
+                <Button variant='success' onClick={handleShow}>
+                    Cart Items 
+                    { totalCartCount == 0 ? 
+                       (<></>)
+                       : 
+                       (
+                       <>
+                        {' '}<Badge bg="danger">{totalCartCount}</Badge>
+                       </>
+                       )}
+                    
+                    
+                </Button>
+               
             </Navbar.Collapse>
         </Navbar>
         <Modal show={show} onHide={handleClose}>

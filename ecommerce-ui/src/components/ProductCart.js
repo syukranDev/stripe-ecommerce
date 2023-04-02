@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Card, Button, Form, Row, Col } from 'react-bootstrap'
+import { Pagination, Card, Button, Form, Row, Col } from 'react-bootstrap'
 import { CartContext } from '../context/CartContext'
 
 
@@ -13,6 +13,7 @@ export const ProductCard = (props) => {
 
     return (
             <Card>
+                <Card.Img  variant='top' src={product.path}></Card.Img>
                 <Card.Body>
                     <Card.Title>{product.title}</Card.Title>
                     <Card.Text>${product.price}</Card.Text>
@@ -23,10 +24,11 @@ export const ProductCard = (props) => {
                         <Form as={Row}>
                             <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
                             <Col sm="6">
-                                <Button sm="6" className='mx-2' onClick={() => cart.addOneToCart(product.id)}>+</Button>
-                                <Button sm="6" className='mx-2' onClick={() => cart.removeOneFromCart(product.id)}>-</Button>
+                                <Button bg='secondary' size="sm " sm="6" className='mx-1' onClick={() => cart.addOneToCart(product.id)}>+</Button>
+                                <Button bg='secondary' size="sm" sm="6" className='mx-1' onClick={() => cart.removeOneFromCart(product.id)}>-</Button>
                             </Col>
                         </Form>
+                        <hr></hr>
                         <Button variant='danger' onClick={() => cart.deleteFromCart(product.id)}>Remove From Cart</Button>
                       </>
                       )
